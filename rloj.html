@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reloj Gigante</title>
+
+<!-- Google Fonts: Merriweather -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        background: black;
+        color: white; /* Números en blanco */
+        font-family: 'Merriweather', serif; /* Merriweather */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+    #clock {
+        display: flex;
+        justify-content: center;
+        align-items: baseline; /* para alinear los segundos */
+        line-height: 1;
+    }
+
+    #hhmm {
+        font-size: 20vw; /* Horas y minutos grandes */
+        margin-right: 0.5vw;
+    }
+
+    #ss {
+        font-size: 10vw; /* Segundos más pequeños */
+        opacity: 0.8;
+    }
+</style>
+</head>
+
+<body>
+
+<div id="clock">
+    <div id="hhmm">00:00</div>
+    <div id="ss">00</div>
+</div>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        const s = String(now.getSeconds()).padStart(2, '0');
+
+        document.getElementById("hhmm").textContent = `${h}:${m}`;
+        document.getElementById("ss").textContent = s;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
+
